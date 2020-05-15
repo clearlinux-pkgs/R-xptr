@@ -4,7 +4,7 @@
 #
 Name     : R-xptr
 Version  : 1.1.3
-Release  : 3
+Release  : 4
 URL      : https://cran.r-project.org/src/contrib/xptr_1.1.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/xptr_1.1.3.tar.gz
 Summary  : Manipulating External Pointer
@@ -14,8 +14,6 @@ Requires: R-xptr-lib = %{version}-%{release}
 BuildRequires : buildreq-R
 
 %description
-# Manipulating External Pointer
-There is limited native support for external pointers in the R interface.
 This package provides some basic tools to verify, create and modify 'externalptr' objects.
 
 %package lib
@@ -28,21 +26,22 @@ lib components for the R-xptr package.
 
 %prep
 %setup -q -c -n xptr
+cd %{_builddir}/xptr
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1585959607
+export SOURCE_DATE_EPOCH=1589565869
 
 %install
-export SOURCE_DATE_EPOCH=1585959607
+export SOURCE_DATE_EPOCH=1589565869
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
